@@ -14,7 +14,7 @@ class ApiOns:
             "dat_fim": data_fim,
             "cod_areacarga": cod_areacarga,
         }
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, timeout=10)
         return response
 
     def get_carga_programada(
@@ -26,7 +26,7 @@ class ApiOns:
             "dat_fim": data_fim,
             "cod_areacarga": cod_areacarga,
         }
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, timeout=10)
         return response
 
 
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     print(resp_verificada.status_code)
     if resp_verificada.status_code == 200:
         print(resp_verificada.content)
-        
+
     print("Teste de carga programada")
     resp_programada = api.get_carga_verificada("2021-01-01", "2021-01-02", "SP")
     print(resp_programada.status_code)
